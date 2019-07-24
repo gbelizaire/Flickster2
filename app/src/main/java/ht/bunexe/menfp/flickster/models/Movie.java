@@ -3,10 +3,12 @@ package ht.bunexe.menfp.flickster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
     int movieId;
     String title;
@@ -14,6 +16,9 @@ public class Movie {
     double vote_average;
     String backdrop_path;
     String overview;
+
+    public Movie() {
+    }
 
     public  Movie(JSONObject jsonObject) throws JSONException {
         this.movieId = jsonObject.getInt("id");
@@ -50,7 +55,16 @@ public class Movie {
     public String getBackdrop_path() {
         return String.format("https://image.tmdb.org/t/p/w342/%s",backdrop_path);
     }
+
     public String getOverview() {
         return overview;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public int getMovieId() {
+        return movieId;
     }
 }

@@ -16,6 +16,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 import ht.bunexe.menfp.flickster.adapters.MoviesAdapter;
 import ht.bunexe.menfp.flickster.models.Movie;
@@ -24,13 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
     // declaration d'une variable pointant vers le url
     private static final String MOVIES_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
-
+    @BindView(R.id.rvMovies)
+    RecyclerView rvMovies;
     List<Movie> movies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        ButterKnife.bind(this);
+
+        //RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
         final MoviesAdapter adapter= new MoviesAdapter(this,movies);
         rvMovies.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
